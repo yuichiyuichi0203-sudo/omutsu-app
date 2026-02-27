@@ -7,3 +7,30 @@
   button { font-size: 1.2em; padding: 10px 20px; margin: 5px; }
   #warning { font-weight: bold; font-size: 1.2em; color: red; }
 </style>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>オムツ在庫管理</title>
+</head>
+<body>
+  <h1>オムツ在庫管理アプリ</h1>
+  <h2>現在の在庫：<span id="stock">0</span> 枚</h2>
+  <button onclick="useOne()">-1 使用</button>
+  <button onclick="addTen()">+10 補充</button>
+  <p id="warning" style="color:red;"></p>
+
+  <script>
+    let stock = localStorage.getItem("stock");
+    if (stock === null) { stock = 50; } else { stock = parseInt(stock); }
+
+    function updateDisplay() {
+      document.getElementById("stock").innerText = stock;
+      localStorage.setItem("stock", stock);
+      document.getElementById("warning").innerText = stock <= 20 ? "⚠ 残り20枚以下です！" : "";
+    }
+    function useOne() { if (stock > 0) { stock--; updateDisplay(); } }
+    function addTen() { stock += 10; updateDisplay(); }
+    updateDisplay();
+  </script>
+</body>
+</html>
