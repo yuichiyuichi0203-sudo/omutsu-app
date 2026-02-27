@@ -6,7 +6,10 @@
 <body>
   <h1>オムツ在庫管理アプリ</h1>
   <h2>現在の在庫：<span id="stock">0</span> 枚</h2>
-  <button onclick="useOne()">-1 使用</button>
+<p>出した枚数：<span id="used">0</span> 枚</p>
+<p>補充した枚数：<span id="added">0</span> 枚</p>  
+
+<button onclick="useOne()">-1 使用</button>
   <button onclick="addTen()">+10 補充</button>
   <p id="warning" style="color:red;"></p>
 
@@ -24,4 +27,5 @@
     updateDisplay();
   </script>
 </body>
+
 </html>
